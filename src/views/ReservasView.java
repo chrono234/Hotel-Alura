@@ -15,6 +15,10 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.text.Format;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -149,24 +153,49 @@ public class ReservasView extends JFrame {
 		txtFechaS.setBorder(new LineBorder(new Color(255, 255, 255), 0));
 		panel.add(txtFechaS);
 		
-	
-		
 		txtValor = new JTextField();
 		txtValor.setBackground(SystemColor.text);
 		txtValor.setHorizontalAlignment(SwingConstants.CENTER);
 		txtValor.setForeground(Color.BLACK);
-		txtValor.setBounds(78, 328, 43, 33);
+		//txtValor.setBounds(78, 328, 43, 33);
 		txtValor.setEditable(false);
 		txtValor.setFont(new Font("Roboto Black", Font.BOLD, 17));
 		txtValor.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-		panel.add(txtValor);
 		txtValor.setColumns(10);
+		panel.add(txtValor);
 		
 		JLabel lblValor = new JLabel("VALOR DE LA RESERVA");
 		lblValor.setForeground(SystemColor.textInactiveText);
 		lblValor.setBounds(72, 303, 196, 14);
 		lblValor.setFont(new Font("Roboto Black", Font.PLAIN, 18));
 		panel.add(lblValor);
+		
+		/**/
+		JTextField textField = new JTextField();
+		textField.setBounds(72, 328, 286, 33);
+		textField.setFont(new Font("Roboto Black", Font.PLAIN, 18));
+		textField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		textField.setColumns(10);
+		panel.add(textField);
+		textField.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				char c = e.getKeyChar();
+				if (!((c >= '0') && (c <= '9') ||
+						(c == KeyEvent.VK_BACK_SPACE) ||
+						(c == KeyEvent.VK_DELETE))) {
+					e.consume();
+				}
+			}
+		});
+		textField.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				String text = textField.getText();
+				if(text.isEmpty()) 
+					lblValor.setForeground(Color.RED);
+					lblValor.setText("Ingrese numeros");
+			}
+		});
 		
 		txtFormaPago = new JComboBox();
 		txtFormaPago.setBounds(68, 417, 289, 38);
@@ -295,7 +324,8 @@ public class ReservasView extends JFrame {
 		btnsiguiente.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (ReservasView.txtFechaE.getDate() != null && ReservasView.txtFechaS.getDate() != null) {		
+				if (ReservasView.txtFechaE.getDate() != null && ReservasView.txtFechaS.getDate() != null
+						&& !textField.getText().isEmpty()) {		
 					RegistroHuesped registro = new RegistroHuesped();
 					registro.setVisible(true);
 				} else {

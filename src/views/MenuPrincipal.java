@@ -72,13 +72,13 @@ public class MenuPrincipal extends JFrame {
 		panel.add(logo);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 500, 910, 37);
+		panel_1.setBounds(-324, 489, 910, 37);
 		panel_1.setBackground(new Color(12, 138, 199));
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblCopyR = new JLabel("Desarrollado por Fulanita de Tal © 2022");
-		lblCopyR.setBounds(315, 11, 284, 19);
+		JLabel lblCopyR = new JLabel("Desarrollado por Jairo Orozco © 2022");
+		lblCopyR.setBounds(330, 11, 300, 19);
 		lblCopyR.setForeground(new Color(240, 248, 255));
 		lblCopyR.setFont(new Font("Roboto", Font.PLAIN, 16));
 		panel_1.add(lblCopyR);
