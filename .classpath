@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="Jcalendar/lib/jgoodies-common-1.2.0.jar"/>
 	<classpathentry kind="lib" path="Jcalendar/lib/jgoodies-looks-2.4.1.jar"/>
 	<classpathentry kind="lib" path="Jcalendar/lib/junit-4.6.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/MySQL/Connector J 8.0/mysql-connector-j-8.0.31.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
