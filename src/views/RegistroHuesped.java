@@ -7,6 +7,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import java.awt.Color;
 import com.toedter.calendar.JDateChooser;
+
+import ErroresFormulario.ErroresFormulario;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
@@ -38,6 +41,8 @@ public class RegistroHuesped extends JFrame {
 	private JLabel labelExit;
 	private JLabel labelAtras;
 	int xMouse, yMouse;
+	
+
 
 	/**
 	 * Launch the application.
@@ -247,6 +252,11 @@ public class RegistroHuesped extends JFrame {
 		separator_1_2_5.setForeground(new Color(12, 138, 199));
 		separator_1_2_5.setBackground(new Color(12, 138, 199));
 		contentPane.add(separator_1_2_5);
+		
+		ErroresFormulario nombre = new ErroresFormulario(txtNombre, lblNombre, false);
+		ErroresFormulario apellido = new ErroresFormulario(txtApellido, lblApellido, false);
+		ErroresFormulario telefono = new ErroresFormulario(txtTelefono, lblTelefono, true);
+		ErroresFormulario reserva = new ErroresFormulario(txtNreserva, lblNumeroReserva, true);
 		
 		JPanel btnguardar = new JPanel();
 		btnguardar.setBounds(723, 560, 122, 35);

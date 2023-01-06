@@ -11,6 +11,9 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
+
+import ErroresFormulario.ErroresFormulario;
+
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -170,32 +173,15 @@ public class ReservasView extends JFrame {
 		lblValor.setFont(new Font("Roboto Black", Font.PLAIN, 18));
 		panel.add(lblValor);
 		
-		/**/
+		/*logic to inform errors to user*/
 		JTextField textField = new JTextField();
 		textField.setBounds(72, 328, 286, 33);
 		textField.setFont(new Font("Roboto Black", Font.PLAIN, 18));
 		textField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		textField.setColumns(10);
 		panel.add(textField);
-		textField.addKeyListener(new KeyAdapter() {
-			public void keyTyped(KeyEvent e) {
-				char c = e.getKeyChar();
-				if (!((c >= '0') && (c <= '9') ||
-						(c == KeyEvent.VK_BACK_SPACE) ||
-						(c == KeyEvent.VK_DELETE))) {
-					e.consume();
-				}
-			}
-		});
-		textField.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusLost(FocusEvent e) {
-				String text = textField.getText();
-				if(text.isEmpty()) 
-					lblValor.setForeground(Color.RED);
-					lblValor.setText("Ingrese numeros");
-			}
-		});
+		
+		ErroresFormulario valorReserva = new ErroresFormulario(textField, lblValor, true);
 		
 		txtFormaPago = new JComboBox();
 		txtFormaPago.setBounds(68, 417, 289, 38);
@@ -321,18 +307,8 @@ public class ReservasView extends JFrame {
 		panel.add(separator_1);
 		
 		JPanel btnsiguiente = new JPanel();
-		btnsiguiente.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if (ReservasView.txtFechaE.getDate() != null && ReservasView.txtFechaS.getDate() != null
-						&& !textField.getText().isEmpty()) {		
-					RegistroHuesped registro = new RegistroHuesped();
-					registro.setVisible(true);
-				} else {
-					JOptionPane.showMessageDialog(null, "Debes llenar todos los campos.");
-				}
-			}						
-		});
+		ErroresFormulario completarCampos = new ErroresFormulario(btnsiguiente, textField);
+		
 		btnsiguiente.setLayout(null);
 		btnsiguiente.setBackground(SystemColor.textHighlight);
 		btnsiguiente.setBounds(238, 493, 122, 35);
