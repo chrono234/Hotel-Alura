@@ -168,6 +168,7 @@ public class ReservasView extends JFrame {
 		panel.add(txtValor);
 		
 		JLabel lblValor = new JLabel("VALOR DE LA RESERVA");
+		String valorDefault = "VALOR DE LA RESERVA";
 		lblValor.setForeground(SystemColor.textInactiveText);
 		lblValor.setBounds(72, 303, 196, 14);
 		lblValor.setFont(new Font("Roboto Black", Font.PLAIN, 18));
@@ -181,7 +182,7 @@ public class ReservasView extends JFrame {
 		textField.setColumns(10);
 		panel.add(textField);
 		
-		ErroresFormulario valorReserva = new ErroresFormulario(textField, lblValor, true);
+		ErroresFormulario valorReserva = new ErroresFormulario(textField, lblValor, valorDefault, true);
 		
 		txtFormaPago = new JComboBox();
 		txtFormaPago.setBounds(68, 417, 289, 38);

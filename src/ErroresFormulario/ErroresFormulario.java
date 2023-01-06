@@ -1,6 +1,7 @@
 package ErroresFormulario;
 
 import java.awt.Color;
+import java.awt.SystemColor;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
@@ -39,12 +40,12 @@ public class ErroresFormulario {
 	}
 
 	/*Muestra los errores de escribir solo numeros o campo vacío*/
-	public ErroresFormulario(JTextField textField,JLabel JLabel, boolean campoNumerico ) {
-		if (campoNumerico == true) {
+	public ErroresFormulario(JTextField textField,JLabel JLabel, String textDefault, boolean numberField ) {
+		if (numberField == true) {
 			textField.addKeyListener(new KeyAdapter() {
 				public void keyTyped(KeyEvent e) {
 					char c = e.getKeyChar();
-					if (!((c >= '0') && (c <= '9') ||
+					  if (!((c >= '0') && (c <= '9') ||
 							(c == KeyEvent.VK_BACK_SPACE) ||
 							(c == KeyEvent.VK_DELETE))) {
 						e.consume();
@@ -59,9 +60,10 @@ public class ErroresFormulario {
 						JLabel.setForeground(Color.RED);
 						JLabel.setText(escribeNumeros);
 					}
-					if(!text.isEmpty() && text.matches("[0-9]+")) {
-						JLabel.setForeground(Color.BLACK);
-                        /**/
+					 if(!text.isEmpty() && text.matches("[0-9]+")) {
+						JLabel.removeFocusListener(null);
+						JLabel.setForeground(SystemColor.textInactiveText);
+						JLabel.setText(textDefault);
 					}
 				}
 			});

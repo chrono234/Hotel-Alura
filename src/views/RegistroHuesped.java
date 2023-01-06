@@ -160,30 +160,35 @@ public class RegistroHuesped extends JFrame {
 		contentPane.add(txtNacionalidad);
 		
 		JLabel lblNombre = new JLabel("NOMBRE");
+		String nombreDefault = "NOMBRE";
 		lblNombre.setBounds(562, 119, 253, 14);
 		lblNombre.setForeground(SystemColor.textInactiveText);
 		lblNombre.setFont(new Font("Roboto Black", Font.PLAIN, 18));
 		contentPane.add(lblNombre);
 		
 		JLabel lblApellido = new JLabel("APELLIDO");
+		String apellidoDefault = "APELLIDO";
 		lblApellido.setBounds(560, 189, 255, 14);
 		lblApellido.setForeground(SystemColor.textInactiveText);
 		lblApellido.setFont(new Font("Roboto Black", Font.PLAIN, 18));
 		contentPane.add(lblApellido);
 		
 		JLabel lblFechaN = new JLabel("FECHA DE NACIMIENTO");
+		String FechaDefault = "FECHA DE NACIMIENTO";
 		lblFechaN.setBounds(560, 256, 255, 14);
 		lblFechaN.setForeground(SystemColor.textInactiveText);
 		lblFechaN.setFont(new Font("Roboto Black", Font.PLAIN, 18));
 		contentPane.add(lblFechaN);
 		
 		JLabel lblNacionalidad = new JLabel("NACIONALIDAD");
+		String nacionalidadDefault = "NACIONALIDAD";
 		lblNacionalidad.setBounds(560, 326, 255, 14);
 		lblNacionalidad.setForeground(SystemColor.textInactiveText);
 		lblNacionalidad.setFont(new Font("Roboto Black", Font.PLAIN, 18));
 		contentPane.add(lblNacionalidad);
 		
 		JLabel lblTelefono = new JLabel("TELÉFONO");
+		String telefonoDefault = "TELÉFONO";
 		lblTelefono.setBounds(562, 406, 253, 14);
 		lblTelefono.setForeground(SystemColor.textInactiveText);
 		lblTelefono.setFont(new Font("Roboto Black", Font.PLAIN, 18));
@@ -204,6 +209,7 @@ public class RegistroHuesped extends JFrame {
 		contentPane.add(lblTitulo);
 		
 		JLabel lblNumeroReserva = new JLabel("NÚMERO DE RESERVA");
+		String numeroReservaDefault = "NÚMERO DE RESERVA";
 		lblNumeroReserva.setBounds(560, 474, 253, 14);
 		lblNumeroReserva.setForeground(SystemColor.textInactiveText);
 		lblNumeroReserva.setFont(new Font("Roboto Black", Font.PLAIN, 18));
@@ -253,10 +259,10 @@ public class RegistroHuesped extends JFrame {
 		separator_1_2_5.setBackground(new Color(12, 138, 199));
 		contentPane.add(separator_1_2_5);
 		
-		ErroresFormulario nombre = new ErroresFormulario(txtNombre, lblNombre, false);
-		ErroresFormulario apellido = new ErroresFormulario(txtApellido, lblApellido, false);
-		ErroresFormulario telefono = new ErroresFormulario(txtTelefono, lblTelefono, true);
-		ErroresFormulario reserva = new ErroresFormulario(txtNreserva, lblNumeroReserva, true);
+		ErroresFormulario nombre = new ErroresFormulario(txtNombre, lblNombre, nombreDefault, false);
+		ErroresFormulario apellido = new ErroresFormulario(txtApellido, lblApellido, apellidoDefault, false);
+		ErroresFormulario telefono = new ErroresFormulario(txtTelefono, lblTelefono, telefonoDefault, true);
+		ErroresFormulario reserva = new ErroresFormulario(txtNreserva, lblNumeroReserva, numeroReservaDefault, true);
 		
 		JPanel btnguardar = new JPanel();
 		btnguardar.setBounds(723, 560, 122, 35);
