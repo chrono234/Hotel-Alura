@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import views.MenuPrincipal;
 import views.RegistroHuesped;
 import views.ReservasView;
 
@@ -21,8 +23,10 @@ public class ErroresFormulario {
 	private String campoVacio = "El campo no puede estar vacío";
 	private String escribeNumeros = "Escribe solo números";
 	private String completarCampos = "Debes llenar todos los campos.";
+	
 
-	/* muestra el error de completar todos los campos en reservasView */
+
+	// muestra el error de que tiene que completar todos los campos en reservasView 
 	public ErroresFormulario(JPanel btn, JTextField textField) {
 		btn.addMouseListener(new MouseAdapter() {
 			@Override
@@ -38,16 +42,43 @@ public class ErroresFormulario {
 		});
 
 	}
+	
+	/*
+	//muestra el error de que tiene que completar todos los campos en RegistroHuesped
+	public ErroresFormulario(JPanel btn, JTextField textNombre, 
+			JTextField textApellido, JTextField numeroTelefono,JTextField numeroReserva ) {
+		btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				RegistroHuesped fecha = new RegistroHuesped();	
+				if (!textNombre.getText().isEmpty()
+				    && !textApellido.getText().isEmpty() 
+				    && !numeroTelefono.getText().isEmpty() 
+				    && fecha.getTxtFechaN().getDate() != null
+				    && !numeroReserva.getText().isEmpty()) {
+					MenuPrincipal menu = new MenuPrincipal();
+					menu.setVisible(true);
+				} else {
+					JOptionPane.showMessageDialog(null, completarCampos);
+				}
+			}
+		});
 
-	/* Muestra los errores de escribir solo numeros o campo vacío */
+	}*/
+	
+
+	// Muestra los errores de escribir solo numeros o campo vacío
 	public ErroresFormulario(JTextField textField, JLabel JLabel, String textDefault, boolean numberField) {
 		if (numberField == true) {
 			textField.addKeyListener(new KeyAdapter() {
 				public void keyTyped(KeyEvent e) {
 					char c = e.getKeyChar();
-					if (!((c >= '0') && (c <= '9') || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
-						e.consume();
+					if (!((c >= '0') && (c <= '9') 
+					   || (c == KeyEvent.VK_BACK_SPACE)
+					   || (c == KeyEvent.VK_DELETE))) {
+					    e.consume();
 					}
+					
 				}
 			});
 
@@ -59,7 +90,8 @@ public class ErroresFormulario {
 						JLabel.setForeground(Color.RED);
 						JLabel.setText(escribeNumeros);
 					}
-					if (!text.isEmpty() && text.matches("[0-9]+")) {
+					if (!text.isEmpty() && text.matches("[0-9]+")
+					    || (!text.isEmpty() && text.matches("[a-zA-Z]+")) && numberField == false) {
 						JLabel.removeFocusListener(this);
 						JLabel.setForeground(SystemColor.textInactiveText);
 						JLabel.setText(textDefault);
@@ -69,6 +101,16 @@ public class ErroresFormulario {
 			});
 		} else {
 			if (numberField == false) {
+				textField.addKeyListener(new KeyAdapter() {
+					public void keyTyped(KeyEvent e) {
+						char c = e.getKeyChar();
+						if (!((c >= 'a' || c >= 'A') && (c <= 'z' || c <= 'Z') 
+						   || (c == KeyEvent.VK_BACK_SPACE)
+						   || (c == KeyEvent.VK_DELETE))) {
+							e.consume();
+						}
+					}
+				});
 				textField.addFocusListener(new FocusAdapter() {
 					@Override
 					public void focusLost(FocusEvent e) {
@@ -77,7 +119,7 @@ public class ErroresFormulario {
 							JLabel.setForeground(Color.RED);
 							JLabel.setText(campoVacio);
 						}
-						if (!text.isEmpty() && text.matches("[a-zA-Z]+")) {
+						else if (!text.isEmpty() && text.matches("[a-zA-Z]+")) {
 							JLabel.removeFocusListener(this);
 							JLabel.setForeground(SystemColor.textInactiveText);
 							JLabel.setText(textDefault);

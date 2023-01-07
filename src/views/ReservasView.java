@@ -45,6 +45,7 @@ public class ReservasView extends JFrame {
 	private JLabel labelExit;
 	private JLabel lblValorSimbolo; 
 	private JLabel labelAtras;
+	
 
 	/**
 	 * Launch the application.
@@ -80,7 +81,6 @@ public class ReservasView extends JFrame {
 		setLocationRelativeTo(null);
 		setUndecorated(true);
 		
-
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(null);
@@ -174,7 +174,6 @@ public class ReservasView extends JFrame {
 		lblValor.setFont(new Font("Roboto Black", Font.PLAIN, 18));
 		panel.add(lblValor);
 		
-		/*logic to inform errors to user*/
 		JTextField textField = new JTextField();
 		textField.setBounds(72, 328, 286, 33);
 		textField.setFont(new Font("Roboto Black", Font.PLAIN, 18));
@@ -308,13 +307,13 @@ public class ReservasView extends JFrame {
 		panel.add(separator_1);
 		
 		JPanel btnsiguiente = new JPanel();
-		ErroresFormulario completarCampos = new ErroresFormulario(btnsiguiente, textField);
-		
 		btnsiguiente.setLayout(null);
 		btnsiguiente.setBackground(SystemColor.textHighlight);
 		btnsiguiente.setBounds(238, 493, 122, 35);
 		panel.add(btnsiguiente);
 		btnsiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		
+		ErroresFormulario completarCampos = new ErroresFormulario(btnsiguiente, textField);	
 		
 		JLabel lblSiguiente = new JLabel("SIGUIENTE");
 		lblSiguiente.setHorizontalAlignment(SwingConstants.CENTER);

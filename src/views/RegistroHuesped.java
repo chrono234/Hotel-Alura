@@ -37,12 +37,17 @@ public class RegistroHuesped extends JFrame {
 	private JTextField txtTelefono;
 	private JTextField txtNreserva;
 	private JDateChooser txtFechaN;
+
+
 	private JComboBox<Format> txtNacionalidad;
 	private JLabel labelExit;
 	private JLabel labelAtras;
 	int xMouse, yMouse;
 	
-
+	public JDateChooser getTxtFechaN() {
+		return txtFechaN;
+	}
+	
 
 	/**
 	 * Launch the application.
@@ -264,11 +269,24 @@ public class RegistroHuesped extends JFrame {
 		ErroresFormulario telefono = new ErroresFormulario(txtTelefono, lblTelefono, telefonoDefault, true);
 		ErroresFormulario reserva = new ErroresFormulario(txtNreserva, lblNumeroReserva, numeroReservaDefault, true);
 		
+	    //ErroresFormulario campoVacio =new ErroresFormulario(btnAtras, txtNombre, txtApellido, txtTelefono, txtNreserva);
+		
 		JPanel btnguardar = new JPanel();
 		btnguardar.setBounds(723, 560, 122, 35);
 		btnguardar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				MenuUsuario usuario = new MenuUsuario();
+				usuario.setVisible(true);
+				dispose();				
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				labelExit.setForeground(Color.white);
+			}			
+			@Override
+			public void mouseExited(MouseEvent e) {
+			     labelExit.setForeground(Color.black);
 			}
 		});
 		btnguardar.setLayout(null);
