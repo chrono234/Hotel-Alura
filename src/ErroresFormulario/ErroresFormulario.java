@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import views.MenuPrincipal;
+import views.MenuUsuario;
 import views.RegistroHuesped;
 import views.ReservasView;
 
@@ -43,20 +43,19 @@ public class ErroresFormulario {
 
 	}
 	
-	/*
+	
 	//muestra el error de que tiene que completar todos los campos en RegistroHuesped
 	public ErroresFormulario(JPanel btn, JTextField textNombre, 
 			JTextField textApellido, JTextField numeroTelefono,JTextField numeroReserva ) {
 		btn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				RegistroHuesped fecha = new RegistroHuesped();	
 				if (!textNombre.getText().isEmpty()
 				    && !textApellido.getText().isEmpty() 
+				    && RegistroHuesped.getTxtFechaN().getDate() != null
 				    && !numeroTelefono.getText().isEmpty() 
-				    && fecha.getTxtFechaN().getDate() != null
 				    && !numeroReserva.getText().isEmpty()) {
-					MenuPrincipal menu = new MenuPrincipal();
+					MenuUsuario menu = new MenuUsuario();
 					menu.setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(null, completarCampos);
@@ -64,7 +63,7 @@ public class ErroresFormulario {
 			}
 		});
 
-	}*/
+	}
 	
 
 	// Muestra los errores de escribir solo numeros o campo vacío

@@ -36,7 +36,7 @@ public class RegistroHuesped extends JFrame {
 	private JTextField txtApellido;
 	private JTextField txtTelefono;
 	private JTextField txtNreserva;
-	private JDateChooser txtFechaN;
+	private static JDateChooser txtFechaN;
 
 
 	private JComboBox<Format> txtNacionalidad;
@@ -44,10 +44,17 @@ public class RegistroHuesped extends JFrame {
 	private JLabel labelAtras;
 	int xMouse, yMouse;
 	
-	public JDateChooser getTxtFechaN() {
+	public JComboBox<Format> getTxtNacionalidad() {
+		return txtNacionalidad;
+	}
+	
+	public static JDateChooser getTxtFechaN() {
 		return txtFechaN;
 	}
 	
+	public static void setTxtFechaN(JDateChooser txtFechaN) {
+		RegistroHuesped.txtFechaN = txtFechaN;
+	}
 
 	/**
 	 * Launch the application.
@@ -151,11 +158,11 @@ public class RegistroHuesped extends JFrame {
 		contentPane.add(txtApellido);
 		
 		txtFechaN = new JDateChooser();
-		txtFechaN.setBounds(560, 278, 285, 36);
-		txtFechaN.getCalendarButton().setIcon(new ImageIcon(RegistroHuesped.class.getResource("/imagenes/icon-reservas.png")));
-		txtFechaN.getCalendarButton().setBackground(SystemColor.textHighlight);
-		txtFechaN.setDateFormatString("yyyy-MM-dd");
-		contentPane.add(txtFechaN);
+		getTxtFechaN().setBounds(560, 278, 285, 36);
+		getTxtFechaN().getCalendarButton().setIcon(new ImageIcon(RegistroHuesped.class.getResource("/imagenes/icon-reservas.png")));
+		getTxtFechaN().getCalendarButton().setBackground(SystemColor.textHighlight);
+		getTxtFechaN().setDateFormatString("yyyy-MM-dd");
+		contentPane.add(getTxtFechaN());
 		
 		txtNacionalidad = new JComboBox();
 		txtNacionalidad.setBounds(560, 350, 289, 36);
@@ -269,30 +276,14 @@ public class RegistroHuesped extends JFrame {
 		ErroresFormulario telefono = new ErroresFormulario(txtTelefono, lblTelefono, telefonoDefault, true);
 		ErroresFormulario reserva = new ErroresFormulario(txtNreserva, lblNumeroReserva, numeroReservaDefault, true);
 		
-	    //ErroresFormulario campoVacio =new ErroresFormulario(btnAtras, txtNombre, txtApellido, txtTelefono, txtNreserva);
 		
 		JPanel btnguardar = new JPanel();
 		btnguardar.setBounds(723, 560, 122, 35);
-		btnguardar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				MenuUsuario usuario = new MenuUsuario();
-				usuario.setVisible(true);
-				dispose();				
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				labelExit.setForeground(Color.white);
-			}			
-			@Override
-			public void mouseExited(MouseEvent e) {
-			     labelExit.setForeground(Color.black);
-			}
-		});
 		btnguardar.setLayout(null);
 		btnguardar.setBackground(new Color(12, 138, 199));
 		contentPane.add(btnguardar);
 		btnguardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		ErroresFormulario campoVacio =new ErroresFormulario(btnguardar, txtNombre, txtApellido, txtTelefono, txtNreserva);
 		
 		JLabel labelGuardar = new JLabel("GUARDAR");
 		labelGuardar.setHorizontalAlignment(SwingConstants.CENTER);
