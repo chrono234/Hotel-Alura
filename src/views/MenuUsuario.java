@@ -1,25 +1,23 @@
 package views;
 
-import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.event.ActionListener;
+import java.awt.SystemColor;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.ActionEvent;
-import java.awt.Toolkit;
-import javax.swing.SwingConstants;
 import java.awt.event.MouseMotionAdapter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.awt.SystemColor;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
 public class MenuUsuario extends JFrame {
@@ -81,10 +79,10 @@ public class MenuUsuario extends JFrame {
 		contentPane.add(panelMenu);
 		panelMenu.setLayout(null);
 		
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setBounds(50, 58, 150, 150);
-		panelMenu.add(lblNewLabel_2);
-		lblNewLabel_2.setIcon(new ImageIcon(MenuUsuario.class.getResource("/imagenes/aH-150px.png")));
+		JLabel logo = new JLabel("");
+		logo.setBounds(50, 58, 150, 150);
+		panelMenu.add(logo);
+		logo.setIcon(new ImageIcon(MenuUsuario.class.getResource("/imagenes/aH-150px.png")));
 		
 		JPanel btnRegistro = new JPanel();
 		btnRegistro.addMouseListener(new MouseAdapter() {
@@ -107,6 +105,7 @@ public class MenuUsuario extends JFrame {
 		btnRegistro.setBackground(new Color(12, 138, 199));
 		panelMenu.add(btnRegistro);
 		btnRegistro.setLayout(null);
+		btnRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		
 		labelRegistro = new JLabel("Registro de reservas");
 		labelRegistro.setIcon(new ImageIcon(MenuUsuario.class.getResource("/imagenes/reservado.png")));
@@ -116,15 +115,15 @@ public class MenuUsuario extends JFrame {
 		labelRegistro.setHorizontalAlignment(SwingConstants.LEFT);
 		btnRegistro.add(labelRegistro);
 		
-		JPanel btnBusqueda = new JPanel();
-		btnBusqueda.addMouseListener(new MouseAdapter() {
+		JPanel btnBuscar = new JPanel();
+		btnBuscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				btnBusqueda.setBackground(new Color(118, 187, 223));				
+				btnBuscar.setBackground(new Color(118, 187, 223));				
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				btnBusqueda.setBackground(new Color(12, 138, 199));	
+				btnBuscar.setBackground(new Color(12, 138, 199));	
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -133,10 +132,11 @@ public class MenuUsuario extends JFrame {
 				dispose();
 			}
 		});
-		btnBusqueda.setBounds(0, 312, 257, 56);
-		btnBusqueda.setBackground(new Color(12, 138, 199));
-		panelMenu.add(btnBusqueda);
-		btnBusqueda.setLayout(null);
+		btnBuscar.setBounds(0, 312, 257, 56);
+		btnBuscar.setBackground(new Color(12, 138, 199));
+		panelMenu.add(btnBuscar);
+		btnBuscar.setLayout(null);
+		btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		
 		JLabel lblBusquedaDeReservas = new JLabel("Búsqueda");
 		lblBusquedaDeReservas.setIcon(new ImageIcon(MenuUsuario.class.getResource("/imagenes/pessoas.png")));
@@ -144,7 +144,7 @@ public class MenuUsuario extends JFrame {
 		lblBusquedaDeReservas.setHorizontalAlignment(SwingConstants.LEFT);
 		lblBusquedaDeReservas.setForeground(Color.WHITE);
 		lblBusquedaDeReservas.setFont(new Font("Roboto", Font.PLAIN, 18));
-		btnBusqueda.add(lblBusquedaDeReservas);
+		btnBuscar.add(lblBusquedaDeReservas);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(26, 219, 201, 2);
@@ -189,11 +189,11 @@ public class MenuUsuario extends JFrame {
 	    contentPane.add(panelFecha);
 	    panelFecha.setLayout(null);
 	    
-	    JLabel lblNewLabel_1 = new JLabel("Sistema de reservas Hotel Alura");
-	    lblNewLabel_1.setBounds(180, 11, 356, 42);
-	    panelFecha.add(lblNewLabel_1);
-	    lblNewLabel_1.setForeground(Color.WHITE);
-	    lblNewLabel_1.setFont(new Font("Roboto", Font.PLAIN, 24));
+	    JLabel lblTitulo = new JLabel("Sistema de reservas Hotel Alura");
+	    lblTitulo.setBounds(180, 11, 356, 42);
+	    panelFecha.add(lblTitulo);
+	    lblTitulo.setForeground(Color.WHITE);
+	    lblTitulo.setFont(new Font("Roboto", Font.PLAIN, 24));
 	    
 	    JLabel labelFecha = new JLabel("New label");
 	    labelFecha.setBounds(35, 64, 294, 36);
@@ -204,10 +204,10 @@ public class MenuUsuario extends JFrame {
 	    String fecha = new SimpleDateFormat("dd/MM/yyyy").format(fechaActual); //formatear la fecha en una cadena
 	    labelFecha.setText("Hoy es " + fecha); //setear la representacion en cadena de la fecha
 	    
-	    JLabel lblNewLabel = new JLabel("Bienvenido");
-	    lblNewLabel.setFont(new Font("Roboto", Font.BOLD, 24));
-	    lblNewLabel.setBounds(302, 234, 147, 46);
-	    contentPane.add(lblNewLabel);
+	    JLabel lblBienvenido = new JLabel("Bienvenido");
+	    lblBienvenido.setFont(new Font("Roboto", Font.BOLD, 24));
+	    lblBienvenido.setBounds(302, 234, 147, 46);
+	    contentPane.add(lblBienvenido);
 	    
 	    String textoDescripcion = "<html><body>Sistema de reserva de hotel. Controle y administre de forma óptima y fácil <br> el flujo de reservas y de huespédes del hotel   </body></html>";
 	    JLabel labelDescripcion = new JLabel(textoDescripcion);
@@ -222,20 +222,20 @@ public class MenuUsuario extends JFrame {
 	    labelDescripcion_1.setBounds(311, 345, 569, 88);
 	    contentPane.add(labelDescripcion_1);
 	    
-	    JLabel lblNewLabel_3 = new JLabel("- Registro de Reservas y Huéspedes");
-	    lblNewLabel_3.setFont(new Font("Roboto", Font.PLAIN, 17));
-	    lblNewLabel_3.setBounds(312, 444, 295, 27);
-	    contentPane.add(lblNewLabel_3);
+	    JLabel lblDescripcion_3 = new JLabel("- Registro de Reservas y Huéspedes");
+	    lblDescripcion_3.setFont(new Font("Roboto", Font.PLAIN, 17));
+	    lblDescripcion_3.setBounds(312, 444, 295, 27);
+	    contentPane.add(lblDescripcion_3);
 	    
-	    JLabel lblNewLabel_3_1 = new JLabel("- Edición de Reservas y Huéspedes existentes");
-	    lblNewLabel_3_1.setFont(new Font("Roboto", Font.PLAIN, 17));
-	    lblNewLabel_3_1.setBounds(312, 482, 355, 27);
-	    contentPane.add(lblNewLabel_3_1);
+	    JLabel lblDescripcion_4 = new JLabel("- Edición de Reservas y Huéspedes existentes");
+	    lblDescripcion_4.setFont(new Font("Roboto", Font.PLAIN, 17));
+	    lblDescripcion_4.setBounds(312, 482, 355, 27);
+	    contentPane.add(lblDescripcion_4);
 	    
-	    JLabel lblNewLabel_3_2 = new JLabel("- Eliminar todo tipo de registros");
-	    lblNewLabel_3_2.setFont(new Font("Roboto", Font.PLAIN, 17));
-	    lblNewLabel_3_2.setBounds(312, 520, 295, 27);
-	    contentPane.add(lblNewLabel_3_2);
+	    JLabel lblDescripcion_5 = new JLabel("- Eliminar todo tipo de registros");
+	    lblDescripcion_5.setFont(new Font("Roboto", Font.PLAIN, 17));
+	    lblDescripcion_5.setBounds(312, 520, 295, 27);
+	    contentPane.add(lblDescripcion_5);
 	}
 	
 	private void headerMousePressed(java.awt.event.MouseEvent evt) {

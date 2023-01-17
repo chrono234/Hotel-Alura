@@ -1,20 +1,20 @@
 package views;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
 public class Exito extends JDialog {
@@ -54,7 +54,7 @@ public class Exito extends JDialog {
 		}
 		{
 			JLabel lblNewLabel_1 = new JLabel("Datos guardados satisfactoriamente");
-			lblNewLabel_1.setForeground(new Color (12, 138, 199));
+			lblNewLabel_1.setForeground(new Color(12, 138, 199));
 			lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 18));
 			lblNewLabel_1.setBounds(27, 122, 322, 21);
 			contentPanel.add(lblNewLabel_1);
@@ -67,21 +67,34 @@ public class Exito extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						dispose();//sirve para cerrar la ventana actual
-						MenuUsuario usuario = new MenuUsuario(); 
+						dispose();// sirve para cerrar la ventana actual
+						MenuUsuario usuario = new MenuUsuario();
 						usuario.setVisible(true);
 					}
 				});
+
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
 			}
+
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+						RegistroHuesped registroHuesped = new RegistroHuesped(0);
+						registroHuesped.setVisible(true);
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
+				getRootPane().setDefaultButton(cancelButton);
+			}
+			{
+
 			}
 		}
+
 	}
 
 }

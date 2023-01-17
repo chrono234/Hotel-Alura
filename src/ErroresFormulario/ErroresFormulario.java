@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import views.MenuUsuario;
+import views.Exito;
 import views.RegistroHuesped;
 import views.ReservasView;
 
@@ -22,9 +22,7 @@ public class ErroresFormulario {
 
 	private String campoVacio = "El campo no puede estar vacío";
 	private String escribeNumeros = "Escribe solo números";
-	private String completarCampos = "Debes llenar todos los campos.";
-	
-
+	private String completarCampos = "Debes llenar todos los campos.";	
 
 	// muestra el error de que tiene que completar todos los campos en reservasView 
 	public ErroresFormulario(JPanel btn, JTextField textField) {
@@ -33,7 +31,7 @@ public class ErroresFormulario {
 			public void mouseClicked(MouseEvent e) {
 				if (ReservasView.txtFechaE.getDate() != null && ReservasView.txtFechaS.getDate() != null
 						&& !textField.getText().isEmpty()) {
-					RegistroHuesped registro = new RegistroHuesped();
+					RegistroHuesped registro = new RegistroHuesped(0);
 					registro.setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(null, completarCampos);
@@ -43,8 +41,7 @@ public class ErroresFormulario {
 
 	}
 	
-	
-	//muestra el error de que tiene que completar todos los campos en RegistroHuesped
+	//muestra el error de completar campos en RegistroHuesped
 	public ErroresFormulario(JPanel btn, JTextField textNombre, 
 			JTextField textApellido, JTextField numeroTelefono,JTextField numeroReserva ) {
 		btn.addMouseListener(new MouseAdapter() {
@@ -55,8 +52,8 @@ public class ErroresFormulario {
 				    && RegistroHuesped.getTxtFechaN().getDate() != null
 				    && !numeroTelefono.getText().isEmpty() 
 				    && !numeroReserva.getText().isEmpty()) {
-					MenuUsuario menu = new MenuUsuario();
-					menu.setVisible(true);
+					Exito exito = new Exito();
+					exito.setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(null, completarCampos);
 				}
@@ -81,7 +78,7 @@ public class ErroresFormulario {
 				}
 			});
 
-			textField.addFocusListener(new FocusAdapter() {
+			 textField.addFocusListener(new FocusAdapter() {
 				@Override
 				public void focusLost(FocusEvent e) {
 					String text = textField.getText();
