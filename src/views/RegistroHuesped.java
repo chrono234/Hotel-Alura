@@ -1,22 +1,16 @@
 package views;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
 import java.text.Format;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,9 +23,9 @@ import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JDateChooser;
 
-import ErroresFormulario.ErroresFormulario;
-import controller.ReservasController;
+import ErroresFormulario.ErroresForm;
 import controller.HuespedesController;
+import controller.ReservasController;
 import modelo.Huespedes;
 
 @SuppressWarnings("serial")
@@ -275,10 +269,10 @@ public class RegistroHuesped extends JFrame {
 		separator_1_2_5.setBackground(new Color(12, 138, 199));
 		contentPane.add(separator_1_2_5);
 		
-		ErroresFormulario nombre = new ErroresFormulario(txtNombre, lblNombre, "NOMBRE", false);
-		ErroresFormulario apellido = new ErroresFormulario(txtApellido, lblApellido, "APELLIDO", false);
-	    ErroresFormulario telefono = new ErroresFormulario(txtTelefono, lblTelefono, "TELEFONO", true);
-		ErroresFormulario reserva = new ErroresFormulario(txtNreserva, lblNreserva, "NUMERO DE RESERVA", true);
+		ErroresForm nombre = new ErroresForm(txtNombre, lblNombre, "NOMBRE", "word");
+		ErroresForm apellido = new ErroresForm(txtApellido, lblApellido, "APELLIDO", "word");
+	    ErroresForm telefono = new ErroresForm(txtTelefono, lblTelefono, "TELEFONO", "number");
+		ErroresForm reserva = new ErroresForm(txtNreserva, lblNreserva, "NUMERO DE RESERVA", "number");
 		
 		JPanel btnguardar = new JPanel();
 		btnguardar.setBounds(723, 560, 122, 35);
@@ -292,7 +286,6 @@ public class RegistroHuesped extends JFrame {
 		btnguardar.setBackground(new Color(12, 138, 199));
 		contentPane.add(btnguardar);
 		btnguardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-		ErroresFormulario campoVacio =new ErroresFormulario(btnguardar, txtNombre, txtApellido, txtTelefono, txtNreserva);
 		
 		JLabel labelGuardar = new JLabel("GUARDAR");
 		labelGuardar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -360,11 +353,11 @@ public class RegistroHuesped extends JFrame {
 				Exito exito = new Exito();
 				exito.setVisible(true);	
 				dispose();
+				
 			} else {
 				JOptionPane.showMessageDialog(this, "Debes llenar todos los campos.");
 			}									
 	}
-	
-										
+								
 	}
 
